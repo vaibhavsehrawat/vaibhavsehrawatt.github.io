@@ -1,0 +1,38 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Access API Example</title>
+</head>
+<body>
+
+    <h1>First-Party Web Page</h1>
+    
+    <p>This is a first-party web page. We'll save some data in the local storage.</p>
+
+    <button onclick="saveData()">Save Data</button>
+
+    <script>
+        async function saveData() {
+            try {
+                // Request storage access
+                const storageAccess = await document.hasStorageAccess();
+
+                if (storageAccess) {
+                    // Storage access granted, save data
+                    const dataToSave = { key: 'exampleKey', value: 'exampleValue' };
+                    localStorage.setItem(dataToSave.key, dataToSave.value);
+                    alert('Data saved successfully!');
+                } else {
+                    // Storage access not granted
+                    alert('Storage access not granted.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+
+</body>
+</html>
