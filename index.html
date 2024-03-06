@@ -19,6 +19,7 @@
                 const storageAccess = await document.hasStorageAccess();
 
                 if (storageAccess) {
+				console.log(storageAccess);
             var dataToSave = document.getElementById('dataInput').value;
             localStorage.setItem('savedData', dataToSave);
             alert('Data saved to top-level localStorage!');
@@ -29,7 +30,7 @@
 
         function retrieveData() {
 		const storageAccess = await document.hasStorageAccess();
-
+			console.log(storageAccess);
              if (!storageAccess) {
 				await document.requestStorageAccess();
 				var retrievedData = localStorage.getItem('savedData');
