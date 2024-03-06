@@ -28,12 +28,26 @@
         }
 
         function retrieveData() {
-            var retrievedData = localStorage.getItem('savedData');
-            if (retrievedData) {
-               alert(retrievedData);
-            } else {
-                alert('No data found in top-level localStorage.');
-            }
+		const storageAccess = await document.hasStorageAccess();
+
+             if (!storageAccess) {
+				await document.requestStorageAccess();
+				var retrievedData = localStorage.getItem('savedData');
+				if (retrievedData) {
+				   alert(retrievedData);
+				} else {
+					alert('No data found in top-level localStorage.');
+				}
+			}
+			else
+			{
+				var retrievedData = localStorage.getItem('savedData');
+				if (retrievedData) {
+				   alert(retrievedData);
+				} else {
+					alert('No data found in top-level localStorage.');
+				}
+			}
         }
     </script>
 </body>
