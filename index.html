@@ -1,38 +1,33 @@
+<!-- iframe.html (Iframe Page) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Storage Access API Example</title>
+    <title>Iframe Page</title>
 </head>
 <body>
-
-    <h1>First-Party Web Page</h1>
-    
-    <p>This is a first-party web page. We'll save some data in the local storage.</p>
-
+    <h2>Iframe Page</h2>
+    <label for="dataInput">Enter Text:</label>
+    <input type="text" id="dataInput" />
     <button onclick="saveData()">Save Data</button>
+    <button onclick="retrieveData()">Retrieve Data</button>
 
     <script>
-        async function saveData() {
-            try {
-                // Request storage access
-                const storageAccess = await document.hasStorageAccess();
+        function saveData() {
+            var dataToSave = document.getElementById('dataInput').value;
+            localStorage.setItem('savedData', dataToSave);
+            alert('Data saved to top-level localStorage!');
+        }
 
-                if (storageAccess) {
-                    // Storage access granted, save data
-                    const dataToSave = { key: 'exampleKey', value: 'exampleValue' };
-                    localStorage.setItem(dataToSave.key, dataToSave.value);
-                    alert('Data saved successfully!');
-                } else {
-                    // Storage access not granted
-                    alert('Storage access not granted.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
+        function retrieveData() {
+            var retrievedData = localStorage.getItem('savedData');
+            if (retrievedData) {
+               alert(retrieveData);
+            } else {
+                alert('No data found in top-level localStorage.');
             }
         }
     </script>
-
 </body>
 </html>
