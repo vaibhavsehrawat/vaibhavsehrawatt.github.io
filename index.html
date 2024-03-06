@@ -14,10 +14,17 @@
     <button onclick="retrieveData()">Retrieve Data</button>
 
     <script>
-        function saveData() {
+        async function saveData() {
+			// Request storage access
+                const storageAccess = await document.hasStorageAccess();
+
+                if (storageAccess) {
             var dataToSave = document.getElementById('dataInput').value;
             localStorage.setItem('savedData', dataToSave);
             alert('Data saved to top-level localStorage!');
+			}
+			else
+				alert('storage access not given');
         }
 
         function retrieveData() {
