@@ -28,7 +28,7 @@
 				alert('storage access not given');
         }
 
-        function retrieveData() {
+        async function retrieveData() {
 		const storageAccess = await document.hasStorageAccess();
 			console.log(storageAccess);
              if (!storageAccess) {
