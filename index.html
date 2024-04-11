@@ -16,6 +16,7 @@
     <script>
         async function saveData() {
 			// Request storage access
+		let handle = await document.requestStorageAccess();
                 const storageAccess = await document.hasStorageAccess();
 
                 if (storageAccess) {
@@ -32,8 +33,8 @@
 		const storageAccess = await document.hasStorageAccess();
 			console.log(storageAccess);
              if (!storageAccess) {
-				await document.requestStorageAccess();
-				var retrievedData = localStorage.getItem('savedData');
+				let handle = await document.requestStorageAccess();
+				var retrievedData = handle.localStorage.getItem('savedData');
 				if (retrievedData) {
 				   alert(retrievedData);
 				} else {
