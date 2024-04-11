@@ -16,13 +16,12 @@
     <script>
         async function saveData() {
 			// Request storage access
-		let handle = await document.requestStorageAccess();
                 const storageAccess = await document.hasStorageAccess();
 
                 if (storageAccess) {
 				console.log(storageAccess);
             var dataToSave = document.getElementById('dataInput').value;
-            handle.localStorage.setItem('savedData', dataToSave);
+            localStorage.setItem('savedData', dataToSave);
             alert('Data saved to top-level localStorage!');
 			}
 			else
