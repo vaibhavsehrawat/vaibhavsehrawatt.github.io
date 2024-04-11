@@ -10,7 +10,7 @@
         const lsLastCheckTimestamp = document.getElementById('ls-last-check-timestamp');
 
         window.setInterval(() => {
-            const ls = window.localStorage;
+            const ls = handle.localStorage;
             lsLastCheckTimestamp.innerText = `Last checked: ${new Date().toLocaleTimeString()}`;
             const lsContents = Object.keys(ls).reduce((acc, key) => {
                 acc[key] = ls[key];
@@ -21,7 +21,7 @@
 
         const writeBtn = document.getElementById('write-btn');
         writeBtn.addEventListener('click', () => {
-            window.localStorage.setItem('window-entry', `window-value-${Date.now()}`);
+            handle.localStorage.setItem('window-entry', `window-value-${Date.now()}`);
         });
     </script>
 </body>
