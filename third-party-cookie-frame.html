@@ -15,7 +15,7 @@
         const requestAccessBtn = document.getElementById('request-access');
 
         window.setInterval(() => {
-            const ls = window.localStorage;
+            const ls = handle.localStorage;
 
             lsLastCheckTimestamp.innerText = `Last checked: ${new Date().toLocaleTimeString()}`;
             document.hasStorageAccess().then(result => {
@@ -32,7 +32,7 @@
 
         const writeBtn = document.getElementById('write-btn');
         writeBtn.addEventListener('click', () => {
-            window.localStorage.setItem('frame-entry', `frame-value-${Date.now()}`);
+            handle.localStorage.setItem('frame-entry', `frame-value-${Date.now()}`);
         });
 
         requestAccessBtn.addEventListener('click', () => {
