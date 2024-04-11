@@ -22,7 +22,7 @@
                 if (storageAccess) {
 				console.log(storageAccess);
             var dataToSave = document.getElementById('dataInput').value;
-            localStorage.setItem('savedData', dataToSave);
+            handle.localStorage.setItem('savedData', dataToSave);
             alert('Data saved to top-level localStorage!');
 			}
 			else
